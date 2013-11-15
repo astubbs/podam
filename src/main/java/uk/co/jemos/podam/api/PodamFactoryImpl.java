@@ -86,8 +86,12 @@ public class PodamFactoryImpl implements PodamFactory {
 	 */
 	private List<Class<? extends Annotation>> excludeAnnotations;
 
-	// ------------------->> Constructors
+	/**
+	 * Map of global class to AttributeStrategy's
+	 */
+	private Map<Class, AttributeStrategy> factoryMap = new HashMap();
 
+	// ------------------->> Constructors
 	/**
 	 * Default constructor.
 	 */
@@ -104,6 +108,18 @@ public class PodamFactoryImpl implements PodamFactory {
 	public PodamFactoryImpl(DataProviderStrategy strategy) {
 		super();
 		this.strategy = strategy;
+	}
+
+	/**
+	 * Add an {@link AttributeStrategy} to be used whenever encountering the given class.
+	 *
+	 * @param attributeClass
+	 * @param attributeStrategy
+	 */
+	public void registerFactory(Class attributeClass, AttributeStrategy attributeStrategy) {
+		if (factoryMap.containsKey(attributeClass))
+			throw new IllegalStateException("Duplicate factories for a given type not allowed.");
+		factoryMap.put(attributeClass, attributeStrategy);
 	}
 
 	// ------------------->> Public methods
@@ -1233,7 +1249,7 @@ public class PodamFactoryImpl implements PodamFactory {
 		Constructor<?>[] constructors = pojoClass.getConstructors();
 		if (constructors.length == 0) {
 			retValue = (T) createNewInstanceForClassWithoutConstructors(
-					pojoClass, depth, pojoClass);
+					pojoClass, depth, pojoClass, genericTypeArgs);
 		} else {
 
 			// There are public constructors. We want constructor with minumum
@@ -1337,6 +1353,13 @@ public class PodamFactoryImpl implements PodamFactory {
 				String noName = null;
 				return (T) resolvePrimitiveValue(pojoClass, annotations,
 						new AttributeMetadata(noName, pojoClass, annotations));
+			}
+
+			boolean thereIsAMatchingFactory = factoryMap.containsKey(pojoClass);
+			if (thereIsAMatchingFactory) {
+				AttributeStrategy attributeStrategy = factoryMap.get(pojoClass);
+				T constructedClass = (T) attributeStrategy.getValue();
+				return constructedClass;
 			}
 
 			if (pojoClass.isInterface()
