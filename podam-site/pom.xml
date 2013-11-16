@@ -4,12 +4,12 @@
 
 	<parent>
 		<groupId>uk.co.jemos.podam</groupId>
-		<artifactId>podam</artifactId>
+		<artifactId>podam-knewton</artifactId>
 		<version>3.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>uk.co.jemos.podam</groupId>
-	<artifactId>podam-site</artifactId>
+	<artifactId>podam-site-knewton</artifactId>
     <version>3.1-SNAPSHOT</version>
 
 </project>

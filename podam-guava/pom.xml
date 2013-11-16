@@ -5,18 +5,18 @@
 
 	<parent>
 		<groupId>uk.co.jemos.podam</groupId>
-		<artifactId>podam</artifactId>
+		<artifactId>podam-knewton</artifactId>
 		<version>3.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>uk.co.jemos.podam</groupId>
-	<artifactId>podam-guava</artifactId>
+	<artifactId>podam-guava-knewton</artifactId>
 	<version>3.1-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
-			<artifactId>podam-core</artifactId>
+			<artifactId>podam-core-knewton</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
