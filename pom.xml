@@ -10,7 +10,7 @@
 
 
 	<groupId>uk.co.jemos.podam</groupId>
-	<artifactId>podam</artifactId>
+	<artifactId>podam-knewton</artifactId>
 	<version>3.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
