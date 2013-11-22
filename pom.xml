@@ -153,11 +153,7 @@
 				<version>1.1</version>
 				<executions>
 					<execution>
-						<id>sign-artifacts</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
+						<phase>none</phase>
 					</execution>
 				</executions>
 			</plugin>
@@ -286,5 +282,17 @@
 	</reporting>
 
 
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Knewton Nexus Repository</name>
+			<url>https://nexus.knewton.net/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Knewton Nexus Snapshot Repository</name>
+			<url>https://nexus.knewton.net/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
 
