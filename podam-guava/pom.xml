@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>uk.co.jemos.podam</groupId>
 		<artifactId>podam-knewton</artifactId>
-		<version>3.1</version>
+		<version>3.2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>uk.co.jemos.podam</groupId>
 	<artifactId>podam-guava-knewton</artifactId>
-	<version>3.1</version>
+	<version>3.2-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
